@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Display: flex nav</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome-4.6.3/css/font-awesome.min.css"
+    />
+    <style>
+      header {
+        background-color: #000;
+        display: flex;
+        align-items: center;
+
+        background-image: linear-gradient(
+          to top,
+          #000000 0%,
+          #333333 50%,
+          #000000 100%
+        );
+      }
+
+      nav li,
+      nav ul {
+        display: flex;
+        padding: 0px;
+      }
+
+      nav a,
+      .sign-out-link {
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .active {
+        color: #55b8a2;
+        font-weight: bold;
+        background-color: #555;
+      }
+
+      .logo {
+        color: #fff;
+        padding: 20px;
+        font-size: 16px;
+      }
+
+      .sign-out-link {
+        font-size: 13px;
+        color: #55b8a2;
+        margin-left: auto;
+      }
+
+      @media (max-width: 460px) {
+        header {
+          flex-flow: row wrap;
+        }
+        nav {
+          order: 2;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo"><i class="fa fa-bullseye fa-3x"></i></a>
+      <nav>
+        <ul>
+          <li><a class="active" href="recipes.html">Recipes</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="delivery.html">Delivery</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="sign-out-link">Sign Out</a>
+    </header>
+
+    <script>
+      // scripts - start here but use a script tag with a src attribute pointing to a scripts file
+      const regLinks = document.querySelectorAll('ul a')
+      document.addEventListener('click', handleClicks)
+
+      function handleClicks(e) {
+        e.preventDefault()
+        if (e.target.matches('ul a')) {
+          e.target.classList.add('active')
+          regLinks.forEach((element) => {
+            if (element != e.target) {
+              element.classList.remove('active')
+            }
+          })
+        }
+      }
+    </script>
+  </body>
+</html>
